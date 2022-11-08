@@ -5,6 +5,7 @@ export default function TodoList() {
     <div>
       <h1>Hello world</h1>
       Hello world
+      <input></input>
     </div>
   );
 }
