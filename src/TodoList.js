@@ -4,7 +4,7 @@ export default function TodoList() {
   return (
     <div>
       <h1>Hello world</h1>
-      Hello world
+      test
       <input></input>
     </div>
   );
