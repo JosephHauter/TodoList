@@ -14,3 +14,9 @@ body {
   bottom: 0px;
   width: 100%;
 }
+.eachTask {
+  background-color: lightblue;
+  font-weight: bold;
+  font-size: 15;
+  border: 4px double blanchedalmond;
+}

@@ -6,13 +6,7 @@ export default function task({ task, toggleTask }) {
   }
   return (
     <div>
-      <div
-        style={{
-          backgroundColor: "lightblue",
-          fontWeight: "bold",
-          fontSize: 15,
-        }}
-      >
+      <div class="eachTask">
         {/* this shows a task with a checkbox next to it */}
         <label>
           <input
