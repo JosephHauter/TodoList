@@ -2,9 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import TodoList from "./TodoList";
 // import uuid to get a unique id for each task
 import { v4 as uuidv4 } from "uuid";
-// storgae for tasks
+// storage for tasks
 const LOCAL_STORAGE_KEY = "todoApp.tasks";
-
 function App() {
   // array containing tasks
   const [tasks, updateTasks] = useState([]);
@@ -19,6 +18,13 @@ function App() {
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
   }, [tasks]);
+  // allows us to check toggle tasks on and off
+  function toggleTask(id) {
+    const newTasks = [...tasks];
+    const task = newTasks.find((task) => task.id === id);
+    task.complete = !task.complete;
+    updateTasks(newTasks);
+  }
 
   function AddTask(e) {
     const name = taskref.current.value;
@@ -30,13 +36,23 @@ function App() {
     // clears out name after submitting
     taskref.current.value = null;
   }
+  // creates new list of uncompleted tasks
+  function handleClearTodos() {
+    const newTodos = tasks.filter((task) => !task.complete);
+    updateTasks(newTodos);
+  }
+
   return (
     <div>
-      <TodoList tasks={tasks} />
+      <div>
+        <h1>
+          {tasks.filter((task) => !task.complete).length} Tasks Unfinished
+        </h1>
+      </div>
+      <TodoList tasks={tasks} toggleTask={toggleTask} />
       <input ref={taskref} type="text" />
       <button onClick={AddTask}>Add Task</button>
-      <button>Clear Task</button>
-      <div>0 Tasks unfinished</div>
+      <button onClick={handleClearTodos}>Clear Task</button>
     </div>
   );
 }
