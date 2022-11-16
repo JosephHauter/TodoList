@@ -43,7 +43,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div style={{ backgroundColor: "lightpink", textAlign: "center" }}>
       <div>
         <h1>
           {tasks.filter((task) => !task.complete).length} Tasks Unfinished

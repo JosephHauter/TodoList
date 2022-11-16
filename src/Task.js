@@ -6,15 +6,23 @@ export default function task({ task, toggleTask }) {
   }
   return (
     <div>
-      {/* this shows a task with a checkbox next to it */}
-      <label>
-        <input
-          type="checkbox"
-          checked={task.complete}
-          onChange={handleTodoClick}
-        ></input>
-        {task.name}
-      </label>
+      <div
+        style={{
+          backgroundColor: "lightblue",
+          fontWeight: "bold",
+          fontSize: 15,
+        }}
+      >
+        {/* this shows a task with a checkbox next to it */}
+        <label>
+          <input
+            type="checkbox"
+            checked={task.complete}
+            onChange={handleTodoClick}
+          ></input>
+          {task.name}
+        </label>
+      </div>
     </div>
   );
 }
