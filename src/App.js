@@ -45,7 +45,11 @@ function App() {
     const newTodos = tasks.filter((task) => !task.complete);
     updateTasks(newTodos);
   }
-
+  // clears all tasks
+  function clearAllTasks() {
+    const clearAll = [];
+    updateTasks(clearAll);
+  }
   return (
     <div className="box">
       <div className="main">
@@ -67,16 +71,20 @@ function App() {
           ></MDBInput>
         </div>
         <br></br>
-        <MDBBtn MDBBtn className="me-1" color="success" onClick={AddTask}>
+        <button class="btn btn-success" onClick={AddTask}>
           Add Task
-        </MDBBtn>{" "}
-        <MDBBtn className="me-1" color="danger" onClick={handleClearTodos}>
+        </button>{" "}
+        <button class="btn btn-info" onClick={handleClearTodos}>
           Clear Task
-        </MDBBtn>{" "}
+        </button>{" "}
+        <button onClick={clearAllTasks} class="btn btn-danger">
+          Clear All
+        </button>
         <br></br>
         <br></br>
         <p class="note note-secondary">
-          Check all your tasks then click "Clear Task" to delete them
+          Check all your tasks after completing them then click "Clear Task" to
+          delete them
         </p>
         <figure className="mb-0">
           <MDBTypography blockquote>
