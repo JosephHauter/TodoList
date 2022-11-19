@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import TodoList from "./TodoList";
 import "./App.css";
-import { MDBBtn, MDBInput, MDBTypography, MDBFooter } from "mdb-react-ui-kit";
-
+import { MDBInput, MDBTypography, MDBFooter } from "mdb-react-ui-kit";
+import ButtonAppBar from "./appBar";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 // import uuid to get a unique id for each task
 import { v4 as uuidv4 } from "uuid";
 // storage for tasks
@@ -50,67 +52,83 @@ function App() {
     const clearAll = [];
     updateTasks(clearAll);
   }
+  // dark mode which uses a switch in appBar.js
+  const [darkMode, setDarkMode] = useState(false);
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? "dark" : "light",
+    },
+  });
+
   return (
-    <div className="box">
-      <div className="main">
-        <div>
-          <h1>Task Completer</h1>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className="box">
+        <div className="main">
+          <div>
+            <ButtonAppBar
+              check={darkMode}
+              change={() => setDarkMode(!darkMode)}
+            />
+          </div>
+          <TodoList tasks={tasks} toggleTask={toggleTask} />
+          <div class="w-75 p-3">
+            <br></br>
+            <MDBInput
+              label="Enter a Task"
+              inputRef={taskref}
+              type="text"
+              size="sm"
+              placeholder="Submit Assignment"
+            ></MDBInput>
+          </div>
+          <br></br>
+          <button class="btn btn-success" onClick={AddTask}>
+            Add Task
+          </button>{" "}
+          <button class="btn btn-info" onClick={handleClearTodos}>
+            Clear Task
+          </button>{" "}
+          <button onClick={clearAllTasks} class="btn btn-danger">
+            Clear All
+          </button>
+          <br></br>
+          <br></br>
           <h2 className="header">
             {tasks.filter((task) => !task.complete).length} Tasks Unfinished
           </h2>
-        </div>
-        <TodoList tasks={tasks} toggleTask={toggleTask} />
-        <div class="w-75 p-3">
           <br></br>
-          <MDBInput
-            label="Enter a Task"
-            inputRef={taskref}
-            type="text"
-            size="sm"
-            placeholder="Submit Assignment"
-          ></MDBInput>
+          <br></br>
+          <p class="note note-secondary">
+            Check all your tasks after completing them then click "Clear Task"
+            to delete them
+          </p>
+          <figure className="mb-0">
+            <MDBTypography blockquote>
+              <p>
+                How wonderful it is that nobody need wait a single moment before
+                starting to improve the world.
+              </p>
+            </MDBTypography>
+            <figcaption className="blockquote-footer mb-0">
+              Anne Frank <cite title="Source Title">Jewish diarist</cite>
+            </figcaption>
+          </figure>
         </div>
-        <br></br>
-        <button class="btn btn-success" onClick={AddTask}>
-          Add Task
-        </button>{" "}
-        <button class="btn btn-info" onClick={handleClearTodos}>
-          Clear Task
-        </button>{" "}
-        <button onClick={clearAllTasks} class="btn btn-danger">
-          Clear All
-        </button>
-        <br></br>
-        <br></br>
-        <p class="note note-secondary">
-          Check all your tasks after completing them then click "Clear Task" to
-          delete them
-        </p>
-        <figure className="mb-0">
-          <MDBTypography blockquote>
-            <p>
-              How wonderful it is that nobody need wait a single moment before
-              starting to improve the world.
-            </p>
-          </MDBTypography>
-          <figcaption className="blockquote-footer mb-0">
-            Anne Frank <cite title="Source Title">Jewish diarist</cite>
-          </figcaption>
-        </figure>
+        <div className="footer">
+          <MDBFooter bgColor="light" className="text-center text-lg-left">
+            <div
+              className="text-center p-3"
+              style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+            >
+              <a className="text-dark" href="https://github.com/JosephHauter">
+                https://github.com/JosephHauter
+              </a>
+            </div>
+          </MDBFooter>
+        </div>
       </div>
-      <div className="footer">
-        <MDBFooter bgColor="light" className="text-center text-lg-left">
-          <div
-            className="text-center p-3"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
-          >
-            <a className="text-dark" href="https://github.com/JosephHauter">
-              https://github.com/JosephHauter
-            </a>
-          </div>
-        </MDBFooter>
-      </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
