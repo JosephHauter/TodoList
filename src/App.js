@@ -5,6 +5,7 @@ import { MDBInput, MDBTypography, MDBFooter } from "mdb-react-ui-kit";
 import ButtonAppBar from "./appBar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Clock from "./Clock";
 // import uuid to get a unique id for each task
 import { v4 as uuidv4 } from "uuid";
 // storage for tasks
@@ -97,6 +98,7 @@ function App() {
           <h2 className="header">
             {tasks.filter((task) => !task.complete).length} Tasks Unfinished
           </h2>
+          <Clock />
           <br></br>
           <br></br>
           <p class="note note-secondary">

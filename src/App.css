@@ -16,4 +16,16 @@
   font-weight: bold;
   font-size: 15;
   border: 4px double blanchedalmond;
+  margin: auto;
+  width: 70%;
+  padding: 4px;
+}
+.clockdiv {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  font-size: 60px;
+  font-family: Orbitron;
+  letter-spacing: 7px;
+  border: 4mm ridge rgba(190, 17, 233, 0.6);
 }
