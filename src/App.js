@@ -8,6 +8,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Clock from "./Clock";
 // import uuid to get a unique id for each task
 import { v4 as uuidv4 } from "uuid";
+import Quote from "./Quote";
 // storage for tasks
 const LOCAL_STORAGE_KEY = "todoApp.tasks";
 
@@ -105,18 +106,10 @@ function App() {
             Check all your tasks after completing them then click "Clear Task"
             to delete them
           </p>
-          <figure className="mb-0">
-            <MDBTypography blockquote>
-              <p>
-                How wonderful it is that nobody need wait a single moment before
-                starting to improve the world.
-              </p>
-            </MDBTypography>
-            <figcaption className="blockquote-footer mb-0">
-              Anne Frank <cite title="Source Title">Jewish diarist</cite>
-            </figcaption>
-          </figure>
+          <Quote />
         </div>
+
+        {/* footer displaying my github */}
         <div className="footer">
           <MDBFooter bgColor="light" className="text-center text-lg-left">
             <div
