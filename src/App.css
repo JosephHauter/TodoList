@@ -1,4 +1,4 @@
-.header {
+.tracker {
   font-family: "Lucida Handwriting", "Brush Script MT", cursive;
 }
 .main {
@@ -27,5 +27,5 @@
   font-size: 60px;
   font-family: Orbitron;
   letter-spacing: 7px;
-  border: 4mm ridge rgba(190, 17, 233, 0.6);
+  border: 4mm ridge rgba(9, 138, 224, 0.6);
 }

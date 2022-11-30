@@ -1,15 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import TodoList from "./TodoList";
 import "./App.css";
-import { MDBInput, MDBTypography, MDBFooter } from "mdb-react-ui-kit";
+import { MDBInput, MDBFooter } from "mdb-react-ui-kit";
 import ButtonAppBar from "./appBar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Clock from "./Clock";
+import Quote from "./Quote";
 // import uuid to get a unique id for each task
 import { v4 as uuidv4 } from "uuid";
-import Quote from "./Quote";
-// storage for tasks
+// key storage for tasks
 const LOCAL_STORAGE_KEY = "todoApp.tasks";
 
 function App() {
@@ -96,7 +96,7 @@ function App() {
           </button>
           <br></br>
           <br></br>
-          <h2 className="header">
+          <h2 className="tracker">
             {tasks.filter((task) => !task.complete).length} Tasks Unfinished
           </h2>
           <Clock />

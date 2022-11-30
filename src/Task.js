@@ -7,7 +7,6 @@ export default function task({ task, toggleTask }) {
   return (
     <div>
       <div class="eachTask">
-        {/* this shows a task with a checkbox next to it */}
         <label>
           <input
             type="checkbox"
